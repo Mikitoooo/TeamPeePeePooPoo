@@ -9,12 +9,15 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public float groundDrag;
-
+    //PLAYER MOVEMENT
+    [Header("Jumping")]
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump = true;
-
+    int numberOfJumps;
+    public int maxNumberOfJumps;
+    public ParticleSystem jumpEmitter;
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -46,7 +49,13 @@ public class PlayerController : MonoBehaviour
 
         //Handle drag
         if (grounded)
+        {
             rb.drag = groundDrag;
+            if (numberOfJumps != maxNumberOfJumps)
+            {
+                numberOfJumps = maxNumberOfJumps;
+            }
+        }
         else
             rb.drag = 0;
     }
@@ -62,7 +71,7 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetKeyDown(KeyCode.Space) && readyToJump && grounded)
+        if(Input.GetKeyDown(KeyCode.Space) && readyToJump && numberOfJumps != 0)
         {
             readyToJump = false;
 
@@ -102,6 +111,10 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+        numberOfJumps--;
+
+        jumpEmitter.Play();
     }
 
     private void ResetJump()
