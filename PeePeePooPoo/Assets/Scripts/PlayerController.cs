@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     //PLAYER MOVEMENT
     [Header("Movement")]
     public float moveSpeed;
@@ -15,8 +18,10 @@ public class PlayerController : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump = true;
+    bool jumping;
     int numberOfJumps;
     public int maxNumberOfJumps;
+    public Transform slimeObject;
     public ParticleSystem jumpEmitter;
     [Header("Ground Check")]
     public float playerHeight;
@@ -30,6 +35,18 @@ public class PlayerController : MonoBehaviour
 
     Vector3 moveDirection;
     Rigidbody rb;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +68,7 @@ public class PlayerController : MonoBehaviour
         if (grounded)
         {
             rb.drag = groundDrag;
-            if (numberOfJumps != maxNumberOfJumps)
+            if (numberOfJumps != maxNumberOfJumps && !jumping)
             {
                 numberOfJumps = maxNumberOfJumps;
             }
@@ -112,13 +129,23 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
-        numberOfJumps--;
-
         jumpEmitter.Play();
+
+        jumping = true;
+        StartCoroutine(JumpGroundCheckDelay(0.2f));
+
+        numberOfJumps--;
     }
 
     private void ResetJump()
     {
         readyToJump = true;
+    }
+
+    IEnumerator JumpGroundCheckDelay(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+            jumping = false;
+
     }
 }

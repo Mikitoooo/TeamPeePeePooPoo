@@ -28,7 +28,6 @@ public class PlayerShoot : MonoBehaviour
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out HitInfo, 1000.0f, layerMask))
                 Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 100.0f, Color.yellow);
 
-            print(HitInfo.point);
             FireProjectile(HitInfo.point);
             StartCoroutine(ResetFire(fireRate));
             canShoot = false;
@@ -61,6 +60,9 @@ public class PlayerShoot : MonoBehaviour
 
         // Add force to the projectile
         rb.AddForce(direction * projectileSpeed, ForceMode.Impulse);
+
+        // Reticle Kick
+        ReticleController.instance.ReticleKick();
     }
 
     private IEnumerator ResetFire(float waitTime)
