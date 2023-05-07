@@ -159,7 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e203a6e6e342a9145948df302de3c23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 25
+  lifeTime: 20
+  objectToDestroy: {fileID: 7056299205372000108}
 --- !u!114 &7233297985655827703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032c05af06d03a449bcb069657dcf5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathExplosion: {fileID: 7384965141762423331, guid: 54d0c7b2a079d3d4686d4af80c9e55e5, type: 3}
+  damage: 20
 --- !u!96 &8187311997330915299
 TrailRenderer:
   serializedVersion: 2
