@@ -6,6 +6,7 @@ public class ExperienceCube : MonoBehaviour
 {
     public float bobSpeed = 0.5f;
     public Transform cubeTranform;
+    public float expRewarded;
     private void Update()
     {
         //rotate cube
