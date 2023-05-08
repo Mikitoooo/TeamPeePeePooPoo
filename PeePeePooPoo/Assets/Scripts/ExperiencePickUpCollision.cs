@@ -16,8 +16,19 @@ public class ExperiencePickUpCollision : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<ExperienceCube>())
         {
-            print("COLLISION");
+            // play pick up sound
             pickUpAudioSource.Play();
+            // update exp amount
+            PlayerStats.instance.currentExp = PlayerStats.instance.currentExp + collision.gameObject.GetComponent<ExperienceCube>().expRewarded;
+            // Update UI
+            UIController.instance.UpdateOnXpCollection();
+            // if player has enough xp then level them up
+            if(PlayerStats.instance.currentExp >= PlayerStats.instance.expRequired)
+            {
+                PlayerStats.instance.playerLevel++;
+                PlayerStats.instance.LevelUp();
+            }
+            // destroy pick up on collision
             Destroy(collision.gameObject);
         }
     }
