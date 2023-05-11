@@ -10,6 +10,8 @@ public class PlayerStats : MonoBehaviour
     public float currentExp;
     public float expRequired;
     public int playerLevel = 1;
+    [HideInInspector]
+    public float rateOfFireEV = 1;
 
     public Transform playerToGrow;
 
