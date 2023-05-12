@@ -12,7 +12,7 @@ public class Upgrades : MonoBehaviour
     public Text upgradeTitle;
     public Button upgradeButton;
     public GameObject upgradeWindow;
-    [HideInInspector]
+    //[HideInInspector]
     public int rng;
 
     public void AssignUpgradeToButton()
@@ -23,27 +23,54 @@ public class Upgrades : MonoBehaviour
             case 1:
                 // Increase rate of fires
                 upgradeTitle.text = "Rate of Fire";
-                upgradeButton.onClick.AddListener(IncreaseFireRate);
+                //upgradeButton.onClick.AddListener(IncreaseFireRate);
                 break;
             case 2:
                 // Increase damage
                 upgradeTitle.text = "Increase Damage";
-                upgradeButton.onClick.AddListener(IncreaseDamage);
+                //upgradeButton.onClick.AddListener(IncreaseDamage);
                 break;
             case 3:
                 // Add a slime buddy
                 upgradeTitle.text = "Slime Buddy";
-                upgradeButton.onClick.AddListener(AddSlimeBuddy);
+                //upgradeButton.onClick.AddListener(AddSlimeBuddy);
                 break;
             case 4:
                 // increase movement speed
                 upgradeTitle.text = "Movement Speed";
-                upgradeButton.onClick.AddListener(IncreaseMovementSpeed);
+                //upgradeButton.onClick.AddListener(IncreaseMovementSpeed);
                 break;
             case 5:
                 // Gain additional jump
                 upgradeTitle.text = "Extra Jump";
-                upgradeButton.onClick.AddListener(AddExtraJump);
+                //upgradeButton.onClick.AddListener(AddExtraJump);
+                break;
+        }
+    }
+
+    public void UpgradeSelected()
+    {
+        switch (rng)
+        {
+            case 1:
+                // Increase rate of fires
+                IncreaseFireRate();
+                break;
+            case 2:
+                // Increase damage
+                IncreaseDamage();
+                break;
+            case 3:
+                // Add a slime buddy
+                AddSlimeBuddy();
+                break;
+            case 4:
+                // increase movement speed
+                IncreaseMovementSpeed();
+                break;
+            case 5:
+                // Gain additional jump
+                AddExtraJump();
                 break;
         }
     }
@@ -58,6 +85,8 @@ public class Upgrades : MonoBehaviour
         upgradeButton.onClick.RemoveAllListeners();
         //Hide Upgrade window
         upgradeWindow.SetActive(false);
+
+        print("Upgraded fire rate");
     }
 
     void IncreaseDamage()
@@ -68,6 +97,8 @@ public class Upgrades : MonoBehaviour
         upgradeButton.onClick.RemoveAllListeners();
         //Hide Upgrade window
         upgradeWindow.SetActive(false);
+
+        print("Upgraded Damage");
     }
 
     void AddSlimeBuddy()
@@ -77,6 +108,8 @@ public class Upgrades : MonoBehaviour
         upgradeButton.onClick.RemoveAllListeners();
         //Hide Upgrade window
         upgradeWindow.SetActive(false);
+
+        print("Added slime buddy");
     }
 
     void IncreaseMovementSpeed()
@@ -87,6 +120,8 @@ public class Upgrades : MonoBehaviour
         upgradeButton.onClick.RemoveAllListeners();
         //Hide Upgrade window
         upgradeWindow.SetActive(false);
+
+        print("Upgraded movement speed");
     }
 
     void AddExtraJump()
@@ -97,6 +132,8 @@ public class Upgrades : MonoBehaviour
         upgradeButton.onClick.RemoveAllListeners();
         //Hide Upgrade window
         upgradeWindow.SetActive(false);
+
+        print("Added extra jump");
     }
 
 }
