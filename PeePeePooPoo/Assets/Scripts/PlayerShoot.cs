@@ -49,7 +49,7 @@ public class PlayerShoot : MonoBehaviour
 
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out HitInfo, 1000.0f, layerMask))
                 Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 100.0f, Color.yellow);
-
+            
             FireProjectile(HitInfo.point);
             StartCoroutine(ResetFire(fireRate));
             canShoot = false;

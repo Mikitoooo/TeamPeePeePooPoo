@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using DG.Tweening;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class PlayerController : MonoBehaviour
     public int maxNumberOfJumps;
     public Transform slimeObject;
     public ParticleSystem jumpEmitter;
+    //PLAYER MOVEMENT
+    [Header("Dash")]
+    public float dashSpeed;
+    bool isDashing;
+    public float dashCooldown;
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -88,7 +94,7 @@ public class PlayerController : MonoBehaviour
         //check inputs
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
+        // Jump Inputs
         if(Input.GetKeyDown(KeyCode.Space) && readyToJump && numberOfJumps != 0)
         {
             readyToJump = false;
@@ -97,6 +103,22 @@ public class PlayerController : MonoBehaviour
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
+        //Dash Input
+        if(Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
+        {
+            if(horizontalInput != 0 || verticalInput != 0)
+                rb.AddForce(moveDirection * dashSpeed, ForceMode.Impulse);
+            else
+                rb.AddForce(orientation.forward * dashSpeed, ForceMode.Impulse);
+
+            isDashing = true;
+            Invoke("StartDashCooldown", dashCooldown);
+        }
+    }
+
+    void StartDashCooldown()
+    {
+        isDashing = false;
     }
 
     void MovePlayer()
