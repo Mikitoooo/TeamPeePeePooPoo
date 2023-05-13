@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float groundDrag;
     //PLAYER MOVEMENT
     [Header("Jumping")]
+    public Transform jumpDetectionPoint;
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(jumpDetectionPoint.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
         MyInput();
         SpeedControl();

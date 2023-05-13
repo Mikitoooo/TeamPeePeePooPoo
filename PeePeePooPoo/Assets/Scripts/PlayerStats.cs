@@ -10,7 +10,11 @@ public class PlayerStats : MonoBehaviour
     public float currentExp;
     public float expRequired;
     public int playerLevel = 1;
+    [HideInInspector]
+    public float rateOfFireEV = 1;
 
+    public GameObject feedbackCanvas;
+    public Transform canvasSpawn;
     public Transform playerToGrow;
 
     // Start is called before the first frame update
@@ -32,7 +36,7 @@ public class PlayerStats : MonoBehaviour
     public void LevelUp()
     {
         // slime scale growth amount
-        float growthAmount = 0.1f;
+        float growthAmount = 0.2f;
         // update the level requirements
         UpdateExpRequirments();
         // increase the size of the player
@@ -43,11 +47,32 @@ public class PlayerStats : MonoBehaviour
         currentExp = 0;
         // Update the level text UI display
         UIController.instance.UpdateLevelNumbers();
+        // Enable upgrade window pop up
+        UIController.instance.upgradeWindow.SetActive(true);
+        // Assign Button Upgrades
+        UIController.instance.AssignUpgrades();
     }
+    //Updates xp requirement amounts
     public void UpdateExpRequirments()
     {
         float baseXPAmount = 75f;
         float ev = 1.25f;
         expRequired = Mathf.Round(baseXPAmount * Mathf.Pow(playerLevel, ev));
+    }
+
+    // Feedback when picking up xp cubes
+    public void ExpCollectionFeedback(float xpAmount)
+    {
+        //instantiate canvas
+        GameObject canvasInstance = Instantiate(feedbackCanvas, canvasSpawn.transform.position, canvasSpawn.transform.rotation,canvasSpawn);
+        canvasInstance.GetComponent<FeedbackController>().AssignText("+ " + xpAmount + " Exp",1f);
+    }
+
+    // Feedback when leveling xp cubes
+    public void LevelUpFeedback(string upgradePurchased)
+    {
+        //instantiate canvas
+        GameObject canvasInstance = Instantiate(feedbackCanvas, canvasSpawn.transform.position, canvasSpawn.transform.rotation,canvasSpawn);
+        canvasInstance.GetComponent<FeedbackController>().AssignText(upgradePurchased,2f);
     }
 }
