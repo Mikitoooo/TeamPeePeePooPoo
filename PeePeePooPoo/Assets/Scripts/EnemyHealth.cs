@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject xpCube;
     public Transform deathProjectileSpawn;
     public GameObject deathParticleVFX;
-    public AudioSource deathAudioSource;
+    //public AudioSource deathAudioSource;
     [HideInInspector]
     public float health;
     public float expRewarded;
@@ -27,8 +27,6 @@ public class EnemyHealth : MonoBehaviour
         rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
         //add xp reward to xp block
         xpInstance.GetComponent<ExperienceCube>().expRewarded = expRewarded;
-        //play death sound effect
-        deathAudioSource.Play();
         //Play death particle
         GameObject deathVFXClone = Instantiate(deathParticleVFX, deathProjectileSpawn.position, Quaternion.identity);
         // Destroy gameobject
