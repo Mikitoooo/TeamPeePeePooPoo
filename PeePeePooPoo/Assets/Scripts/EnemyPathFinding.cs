@@ -10,6 +10,7 @@ public class EnemyPathFinding : MonoBehaviour
     public float attackDistance = 5;
     public float attackCooldown;
     public float lungeDistance = 15;
+    public Enemy_Hitbox hitBox;
 
     // Start is called before the first frame update
     void Start()
@@ -46,8 +47,11 @@ public class EnemyPathFinding : MonoBehaviour
 
         rb.AddForce(this.gameObject.transform.forward * lungeDistance, ForceMode.Impulse);
 
+        hitBox.ShowHitbox();
+
         canAttack = false;
 
         Invoke("AttackCooldown", attackCooldown);
     }
+
 }

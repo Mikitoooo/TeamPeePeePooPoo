@@ -15,12 +15,6 @@ public class SlimeBuddyBrain : MonoBehaviour
     public float radius;
     private EnemyHealth closestEnemy;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
