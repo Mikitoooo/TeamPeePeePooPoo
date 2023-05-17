@@ -15,6 +15,8 @@ public class EnemyShoot : MonoBehaviour
     bool canShoot = false;
     public float rateOfFireMin;
     public float rateOfFireMax;
+    public float deviationAmount;
+    public int shotsFired;
 
     public Vector3 projectileBuildUpSize;
     public Transform projectileBuildUpObject;
@@ -33,9 +35,7 @@ public class EnemyShoot : MonoBehaviour
     {
         if (Vector3.Distance(this.transform.position, player.transform.position) < shootDistance && canShoot)
         {
-            FireProjectile(player.transform.position);
-            StartCoroutine(ResetFire(Random.Range(rateOfFireMin,rateOfFireMax)));
-            canShoot = false;
+            StartCoroutine(FireShot());
         }
     }
 
@@ -47,6 +47,9 @@ public class EnemyShoot : MonoBehaviour
         //get the direction
         Vector3 direction = (targetPoint - spawnLocation.transform.position).normalized;
 
+        // Add random deviation to the direction
+        Vector3 randomDirection = Quaternion.Euler(Random.Range(-deviationAmount, deviationAmount), Random.Range(-deviationAmount, deviationAmount), 0f) * direction;
+
         //instantiate projectile
         GameObject projectileInstance = Instantiate(projectile, spawnLocation.transform.position, spawnLocation.transform.rotation);
 
@@ -54,7 +57,27 @@ public class EnemyShoot : MonoBehaviour
         Rigidbody rb = projectileInstance.transform.GetChild(0).GetComponent<Rigidbody>();
 
         // Add force to the projectile
-        rb.AddForce(direction * projectileSpeed, ForceMode.Impulse);
+        rb.AddForce(randomDirection * projectileSpeed, ForceMode.Impulse);
+    }
+
+    IEnumerator FireShot()
+    {
+        if (shotsFired == 1)
+        {
+            FireProjectile(player.transform.position);
+            StartCoroutine(ResetFire(Random.Range(rateOfFireMin, rateOfFireMax)));
+            canShoot = false;
+        }
+        else if (shotsFired > 1)
+        {
+            canShoot = false;
+            for (int i = 0; i < shotsFired; i++)
+            {
+                FireProjectile(player.transform.position);
+                yield return new WaitForSeconds(0.5f);
+            }
+            StartCoroutine(ResetFire(Random.Range(rateOfFireMin, rateOfFireMax)));
+        }
     }
 
     private IEnumerator ResetFire(float waitTime)

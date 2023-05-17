@@ -5,17 +5,23 @@ using UnityEngine.AI;
 
 public class EnemyPathFinding : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    NavMeshAgent agent;
+    Rigidbody rb;
+    [Header("Non Charge Enemy")]
     bool canAttack = true;
     public float attackDistance = 5;
     public float attackCooldown;
     public float lungeDistance = 15;
     public Enemy_Hitbox hitBox;
 
+    Transform player;
+
     // Start is called before the first frame update
     void Start()
     {
         agent = this.GetComponent<NavMeshAgent>();
+        player = PlayerStats.instance.gameObject.transform;
+        rb = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -23,16 +29,18 @@ public class EnemyPathFinding : MonoBehaviour
     {
         //print(Vector3.Distance(this.transform.position, PlayerStats.instance.gameObject.transform.position).ToString());
 
-        if (Vector3.Distance(this.transform.position, PlayerStats.instance.gameObject.transform.position) > attackDistance)
+        if (Vector3.Distance(this.transform.position, player.position) > attackDistance)
         {
-            agent.destination = PlayerStats.instance.gameObject.transform.position;
+            agent.destination = player.position;
         }
         else
         {
             if (canAttack)
+            {
                 AttackLunge();
+            }
             else
-                agent.destination = PlayerStats.instance.gameObject.transform.position;
+                agent.destination = player.position;
         }
     }
 
@@ -40,6 +48,7 @@ public class EnemyPathFinding : MonoBehaviour
     {
         canAttack = true;
     }
+
 
     void AttackLunge()
     {
@@ -53,5 +62,6 @@ public class EnemyPathFinding : MonoBehaviour
 
         Invoke("AttackCooldown", attackCooldown);
     }
+
 
 }
