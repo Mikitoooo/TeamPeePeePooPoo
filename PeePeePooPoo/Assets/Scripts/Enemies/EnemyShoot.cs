@@ -54,7 +54,7 @@ public class EnemyShoot : MonoBehaviour
         GameObject projectileInstance = Instantiate(projectile, spawnLocation.transform.position, spawnLocation.transform.rotation);
 
         // Get the Rigidbody component of the projectile instance
-        Rigidbody rb = projectileInstance.transform.GetChild(0).GetComponent<Rigidbody>();
+        Rigidbody rb = projectileInstance.transform.GetComponent<Rigidbody>();
 
         // Add force to the projectile
         rb.AddForce(randomDirection * projectileSpeed, ForceMode.Impulse);

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public int spawnValue;
     public float maxHealth;
     public GameObject xpCube;
     public Transform deathProjectileSpawn;
@@ -29,6 +31,8 @@ public class EnemyHealth : MonoBehaviour
         xpInstance.GetComponent<ExperienceCube>().expRewarded = expRewarded;
         //Play death particle
         GameObject deathVFXClone = Instantiate(deathParticleVFX, deathProjectileSpawn.position, Quaternion.identity);
+        // Decrease count from spawner
+        EnemySpawner.instance.EnemyDestroyed(spawnValue);
         // Destroy gameobject
         Destroy(this.gameObject);
     }

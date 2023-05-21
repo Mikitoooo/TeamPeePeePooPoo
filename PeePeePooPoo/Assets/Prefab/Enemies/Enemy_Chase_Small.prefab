@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0158202da2ef1949be59f46fff26820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnValue: 1
   maxHealth: 100
   xpCube: {fileID: 5781262692903637107, guid: 5ad506499c8fa0d49a5b7495def8cc71, type: 3}
   deathProjectileSpawn: {fileID: 4565497100572346979}
@@ -258,7 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c36df052cc37b41a8e72fb34dbfff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
   attackDistance: 5
   attackCooldown: 2
   lungeDistance: 100

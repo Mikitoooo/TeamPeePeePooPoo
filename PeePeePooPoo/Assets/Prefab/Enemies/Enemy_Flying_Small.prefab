@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 2716708283078460372}
   - component: {fileID: 2716708283078460371}
   - component: {fileID: 2716708283078460382}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy_Flying_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2716708283078460375}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000028461216}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -22.272, y: 3.972, z: 22.771}
   m_LocalScale: {x: 0.58629644, y: 0.58629644, z: 0.58629644}
   m_Children:
@@ -204,7 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0158202da2ef1949be59f46fff26820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  spawnValue: 1
+  maxHealth: 50
   xpCube: {fileID: 5781262692903637107, guid: 5ad506499c8fa0d49a5b7495def8cc71, type: 3}
   deathProjectileSpawn: {fileID: 2716708282901917249}
   deathParticleVFX: {fileID: 1955495335381665188, guid: 117d383ff35a7854ea71ffa8da0ab6b8, type: 3}
@@ -237,12 +238,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b6cb80a929654780a7699e2bd974d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 7966440662710572063, guid: dbbab007b9290e14082c163cad7776d1, type: 3}
+  projectile: {fileID: 7778624374487728633, guid: f971bf2e8604e4a448d1b710de82cc9b, type: 3}
   spawnLocation: {fileID: 2716708283956648245}
   shootDistance: 50
   projectileSpeed: 20
   rateOfFireMin: 2
   rateOfFireMax: 4
+  deviationAmount: 0
+  shotsFired: 1
   projectileBuildUpSize: {x: 0.57586, y: 0.57586, z: 0.57586}
   projectileBuildUpObject: {fileID: 2716708283539154009}
 --- !u!1 &2716708283479928307
@@ -417,7 +420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2716708283956648245}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProjectileSpawn
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
