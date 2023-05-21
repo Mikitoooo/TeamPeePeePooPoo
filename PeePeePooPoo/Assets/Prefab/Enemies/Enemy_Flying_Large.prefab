@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnValue: 4
-  maxHealth: 300
+  maxHealth: 250
   xpCube: {fileID: 5781262692903637107, guid: 5ad506499c8fa0d49a5b7495def8cc71, type: 3}
   deathProjectileSpawn: {fileID: 3279527363716174295}
   deathParticleVFX: {fileID: 1955495335381665188, guid: 117d383ff35a7854ea71ffa8da0ab6b8, type: 3}
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24375908b7fc17243bde26bd257318ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 0.5
   lookSpeed: 2
   delayTime: 0.5
 --- !u!114 &3279527363599400008
@@ -324,9 +324,9 @@ MonoBehaviour:
   projectile: {fileID: 2712729269736030436, guid: c744a80b3a82c7749ae971d140b11f39, type: 3}
   spawnLocation: {fileID: 3279527361784833699}
   shootDistance: 50
-  projectileSpeed: 50
-  rateOfFireMin: 2
-  rateOfFireMax: 4
+  projectileSpeed: 40
+  rateOfFireMin: 4
+  rateOfFireMax: 10
   deviationAmount: 5
   shotsFired: 3
   projectileBuildUpSize: {x: 0.57586, y: 0.57586, z: 0.57586}

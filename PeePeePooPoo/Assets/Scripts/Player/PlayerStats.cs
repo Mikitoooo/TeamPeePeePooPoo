@@ -56,7 +56,7 @@ public class PlayerStats : MonoBehaviour
     public void UpdateExpRequirments()
     {
         float baseXPAmount = 75f;
-        float ev = 1.25f;
+        float ev = 1.15f;
         expRequired = Mathf.Round(baseXPAmount * Mathf.Pow(playerLevel, ev));
     }
 

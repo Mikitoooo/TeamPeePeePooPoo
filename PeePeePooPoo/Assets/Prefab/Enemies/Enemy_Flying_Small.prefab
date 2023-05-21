@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 2716708283078034896}
   - component: {fileID: 2716708283078034910}
   - component: {fileID: 2716708283078034897}
+  - component: {fileID: 8472744679592934583}
   m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
@@ -111,6 +112,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &8472744679592934583
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2716708283078034899}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.49999997
+  m_Center: {x: 0, y: 0, z: -0.0000009536743}
 --- !u!1 &2716708283078460375
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +224,7 @@ MonoBehaviour:
   deathProjectileSpawn: {fileID: 2716708282901917249}
   deathParticleVFX: {fileID: 1955495335381665188, guid: 117d383ff35a7854ea71ffa8da0ab6b8, type: 3}
   health: 0
-  expRewarded: 15
+  expRewarded: 20
 --- !u!114 &2716708283078460371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,9 +255,9 @@ MonoBehaviour:
   projectile: {fileID: 7778624374487728633, guid: f971bf2e8604e4a448d1b710de82cc9b, type: 3}
   spawnLocation: {fileID: 2716708283956648245}
   shootDistance: 50
-  projectileSpeed: 20
-  rateOfFireMin: 2
-  rateOfFireMax: 4
+  projectileSpeed: 25
+  rateOfFireMin: 4
+  rateOfFireMax: 10
   deviationAmount: 0
   shotsFired: 1
   projectileBuildUpSize: {x: 0.57586, y: 0.57586, z: 0.57586}

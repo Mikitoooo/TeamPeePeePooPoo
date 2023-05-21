@@ -12,7 +12,9 @@ public class EnemySpawner : MonoBehaviour
     public float initialSpawnDelay = 2f;
     public float spawnRate = 2f;
     public float spawnRateIncrease = 0.1f;
-    public int maxEnemies;
+    public float startMaxEnemies;
+    public float currentMaxEnemies;
+    public float enemyIncreaseRate;
 
     int currentEnemyCount;
     float currentSpawnDelay;
@@ -32,6 +34,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         //Initializing
+        currentMaxEnemies = startMaxEnemies;
         currentEnemyCount = 0;
         currentSpawnDelay = initialSpawnDelay;
         timer = 0f;
@@ -42,11 +45,12 @@ public class EnemySpawner : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= currentSpawnDelay && currentEnemyCount < maxEnemies)
+        if (timer >= currentSpawnDelay && currentEnemyCount < currentMaxEnemies)
         {
             SpawnEnemy();
             timer = 0f;
             currentSpawnDelay -= spawnRateIncrease;
+            currentMaxEnemies = currentMaxEnemies + enemyIncreaseRate;
         }
     }
 
@@ -54,30 +58,30 @@ public class EnemySpawner : MonoBehaviour
     {
         int rng = Random.Range(0, 100);
 
-        if (rng >= 0 && rng <= 40)
+        if (rng >= 0 && rng <= 45)
         {
-            // case 0 - 40
+            // case 0 - 45
             // Spawn small chase enemy
             Instantiate(enemyPrefabs[0], spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position, transform.rotation);
             currentEnemyCount = currentEnemyCount + 1;
         }
-        else if (rng > 40 && rng <= 75)
+        else if (rng > 45 && rng <= 90)
         {
-            // case 40 - 75
+            // case 45 - 90
             // Spawn small flying enemy
             Instantiate(enemyPrefabs[1], spawnPoints[Random.Range(1, spawnPoints.Length - 1)].position, transform.rotation);
             currentEnemyCount = currentEnemyCount + 1;
         }
-        else if (rng > 75 && rng <= 90)
+        else if (rng > 90 && rng <= 95)
         {
-            // case 75 - 90
+            // case 90 - 95
             // Spawn large chase enemy
             Instantiate(enemyPrefabs[2], spawnPoints[Random.Range(2, spawnPoints.Length - 1)].position, transform.rotation);
             currentEnemyCount = currentEnemyCount + 3;
         }
-        else if (rng > 90 && rng <= 100)
+        else if (rng > 95 && rng <= 100)
         {
-            // case 90 - 100
+            // case 95 - 100
             // Spawn large fly enemy
             Instantiate(enemyPrefabs[3], spawnPoints[Random.Range(3, spawnPoints.Length - 1)].position, transform.rotation);
             currentEnemyCount = currentEnemyCount + 4;

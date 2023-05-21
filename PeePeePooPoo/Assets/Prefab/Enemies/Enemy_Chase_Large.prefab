@@ -133,7 +133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5177438391695237992
 Transform:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.1
-  m_Speed: 5
+  m_Speed: 4
   m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 360
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnValue: 3
-  maxHealth: 500
+  maxHealth: 300
   xpCube: {fileID: 5781262692903637107, guid: 5ad506499c8fa0d49a5b7495def8cc71, type: 3}
   deathProjectileSpawn: {fileID: 5177438392350638021}
   deathParticleVFX: {fileID: 1955495335381665188, guid: 117d383ff35a7854ea71ffa8da0ab6b8, type: 3}
