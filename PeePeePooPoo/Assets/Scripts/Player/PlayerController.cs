@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
             instance = this;
         }
 
-        rb.
     }
 
     // Start is called before the first frame update
