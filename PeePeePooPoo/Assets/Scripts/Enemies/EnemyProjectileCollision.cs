@@ -17,10 +17,16 @@ public class EnemyProjectileCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.name);
+        if (collision.gameObject.tag == "Player" && hit == false)
+        {
+            // Damage the player
+            collision.gameObject.GetComponent<PlayerStats>().currentHealth -= damage;
+
+            hit = true;
+        }
+
         // instantiante impact particle effect
         GameObject deathExplosionClone = Instantiate(deathExplosion, transform.position, transform.rotation);
-
         // Destroy the projectile on contact
         Destroy(transform.gameObject);
     }

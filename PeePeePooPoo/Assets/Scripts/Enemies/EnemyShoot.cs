@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyShoot : MonoBehaviour
 {
-
+    public EnemyStats damageRef;
     private GameObject player;
     public GameObject projectile;
     public Transform spawnLocation;
@@ -24,7 +24,9 @@ public class EnemyShoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Reference the builder
         player = PlayerStats.instance.gameObject;
+        // Set projectile build up to 0 scale
         projectileBuildUpObject.localScale = new Vector3(0, 0, 0);
         // start the projectile Build up
         StartCoroutine(ResetFire(Random.Range(rateOfFireMin, rateOfFireMax)));
@@ -58,6 +60,17 @@ public class EnemyShoot : MonoBehaviour
 
         // Add force to the projectile
         rb.AddForce(randomDirection * projectileSpeed, ForceMode.Impulse);
+
+        // Add damage to the projectile
+        if(projectileInstance.GetComponent<EnemyProjectileCollision>() != null)
+        {
+            projectileInstance.GetComponent<EnemyProjectileCollision>().damage = damageRef.damage;
+        } 
+        else if(projectileInstance.GetComponent<EnemyExplosiveProjectile>() != null)
+        {
+            projectileInstance.GetComponent<EnemyExplosiveProjectile>().damage = damageRef.damage;
+            projectileInstance.GetComponent<EnemyExplosiveProjectile>().explosionDamage = damageRef.damage * 2;
+        }
     }
 
     IEnumerator FireShot()

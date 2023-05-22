@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyExplosiveProjectileExplosion : MonoBehaviour
+public class EnemyExplosiveProjectile : MonoBehaviour
 {
     public GameObject deathExplosion;
     public Rigidbody rb;
     public float damage;
+    public float explosionDamage;
     [Header("Explosive")]
     public Transform explosiveGrowth1;
     public Transform explosiveGrowth2;
@@ -17,20 +18,18 @@ public class EnemyExplosiveProjectileExplosion : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!hit)
+        if (collision.gameObject.tag == "Player" && hit == false)
         {
-            print(collision.gameObject.name);
-            //// Stop linear velocity
-            //rb.velocity = Vector3.zero;
-            //// Stop angular velocity
-            //rb.angularVelocity = Vector3.zero;
-            rb.constraints = RigidbodyConstraints.FreezePosition;
-
-            StartCoroutine(Explosion());
+            // Damage the player
+            collision.gameObject.GetComponent<PlayerStats>().currentHealth -= damage;
 
             hit = true;
         }
 
+        // stop projectile on contact
+        rb.constraints = RigidbodyConstraints.FreezePosition;
+        // Start explosion
+        StartCoroutine(Explosion());
     }
 
     IEnumerator Explosion()
@@ -44,6 +43,8 @@ public class EnemyExplosiveProjectileExplosion : MonoBehaviour
 
         // instantiante impact particle effect
         GameObject deathExplosionClone = Instantiate(deathExplosion, transform.position, transform.rotation);
+        // add damage to explosion
+        deathExplosionClone.GetComponent<EnemyExplosion>().damage = explosionDamage;
         // Destroy the projectile on contact
         Destroy(transform.gameObject);
     }

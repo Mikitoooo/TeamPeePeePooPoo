@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4100317708516368001}
   - component: {fileID: 2853260123646028506}
   - component: {fileID: 3590438217276960033}
-  - component: {fileID: 3590438217276960046}
   m_Layer: 8
   m_Name: SlimeObject
   m_TagString: Player
@@ -192,20 +191,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!136 &3590438217276960046
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3590438217276960047}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.74988055
-  m_Height: 1.3967115
-  m_Direction: 1
-  m_Center: {x: 0.000009536743, y: 0.3, z: -0.000075250864}
 --- !u!1 &4014470470203026385
 GameObject:
   m_ObjectHideFlags: 0
@@ -6382,6 +6367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6456383119091502760}
   - component: {fileID: 5967971620977333269}
+  - component: {fileID: 4102109753887259846}
   - component: {fileID: 5967971620977333268}
   - component: {fileID: 5967971620977333271}
   - component: {fileID: 5967971620977333289}
@@ -6424,6 +6410,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!136 &4102109753887259846
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5967971620977333266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.74988055
+  m_Height: 1.3967115
+  m_Direction: 1
+  m_Center: {x: 0.000009536743, y: 0.3, z: -0.000075250864}
 --- !u!114 &5967971620977333268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6500,6 +6500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5109436dcadedfd449035d1de7e996bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
   currentExp: 0
   expRequired: 0
   playerLevel: 1

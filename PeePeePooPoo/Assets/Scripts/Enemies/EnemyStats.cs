@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyStats : MonoBehaviour
 {
     public int spawnValue;
     public float maxHealth;
+    public float damage;
     public GameObject xpCube;
     public Transform deathProjectileSpawn;
     public GameObject deathParticleVFX;
@@ -32,7 +33,8 @@ public class EnemyHealth : MonoBehaviour
         //Play death particle
         GameObject deathVFXClone = Instantiate(deathParticleVFX, deathProjectileSpawn.position, Quaternion.identity);
         // Decrease count from spawner
-        EnemySpawner.instance.EnemyDestroyed(spawnValue);
+        if(EnemySpawner.instance != null)
+            EnemySpawner.instance.EnemyDestroyed(spawnValue);
         // Destroy gameobject
         Destroy(this.gameObject);
     }

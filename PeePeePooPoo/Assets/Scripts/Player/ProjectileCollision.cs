@@ -11,13 +11,13 @@ public class ProjectileCollision : MonoBehaviour
         // instantiante impact particle effect
         GameObject deathExplosionClone = Instantiate(deathExplosion, transform.position, transform.rotation);
         // Check if the target has a enemy health script attached
-        if(collision.gameObject.GetComponent<EnemyHealth>())
+        if(collision.gameObject.GetComponent<EnemyStats>())
         {
             //deal damage
-            collision.gameObject.GetComponent<EnemyHealth>().health = collision.gameObject.GetComponent<EnemyHealth>().health - damage;
+            collision.gameObject.GetComponent<EnemyStats>().health = collision.gameObject.GetComponent<EnemyStats>().health - damage;
             //Call death event if the target dies
-            if (collision.gameObject.GetComponent<EnemyHealth>().health <= 0)
-                collision.gameObject.GetComponent<EnemyHealth>().DeathEvent();
+            if (collision.gameObject.GetComponent<EnemyStats>().health <= 0)
+                collision.gameObject.GetComponent<EnemyStats>().DeathEvent();
         }
         // Destroy the projectil on contact
         Destroy(transform.parent.gameObject);

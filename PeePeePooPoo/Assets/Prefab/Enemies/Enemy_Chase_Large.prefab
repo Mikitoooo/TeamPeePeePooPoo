@@ -111,6 +111,7 @@ MonoBehaviour:
   damage: 10
   pushbackAmount: 500
   hitboxDuration: 0.2
+  damageRef: {fileID: 5177438391695237975}
 --- !u!1 &5177438391695237998
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnValue: 3
   maxHealth: 300
+  damage: 30
   xpCube: {fileID: 5781262692903637107, guid: 5ad506499c8fa0d49a5b7495def8cc71, type: 3}
   deathProjectileSpawn: {fileID: 5177438392350638021}
   deathParticleVFX: {fileID: 1955495335381665188, guid: 117d383ff35a7854ea71ffa8da0ab6b8, type: 3}

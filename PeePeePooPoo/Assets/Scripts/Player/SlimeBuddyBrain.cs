@@ -13,7 +13,7 @@ public class SlimeBuddyBrain : MonoBehaviour
     bool canShoot = true;
 
     public float radius;
-    private EnemyHealth closestEnemy;
+    private EnemyStats closestEnemy;
 
     // Update is called once per frame
     void Update()
@@ -21,7 +21,7 @@ public class SlimeBuddyBrain : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider collider in colliders)
         {
-            EnemyHealth enemy = collider.GetComponent<EnemyHealth>();
+            EnemyStats enemy = collider.GetComponent<EnemyStats>();
             if (enemy != null)
             {
                 // Check if this enemy is closer than the previous closest enemy

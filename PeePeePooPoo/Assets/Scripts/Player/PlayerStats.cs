@@ -6,6 +6,10 @@ using DG.Tweening;
 public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats instance;
+
+    public float maxHealth;
+    public float currentHealth;
+
     // leveling stuff
     public float currentExp;
     public float expRequired;
@@ -31,6 +35,8 @@ public class PlayerStats : MonoBehaviour
         }
         // Calculate xp requirements
         UpdateExpRequirments();
+        //Set health to max health
+        currentHealth = maxHealth;
     }
 
     public void LevelUp()
@@ -65,7 +71,7 @@ public class PlayerStats : MonoBehaviour
     {
         //instantiate canvas
         GameObject canvasInstance = Instantiate(feedbackCanvas, canvasSpawn.transform.position, canvasSpawn.transform.rotation,canvasSpawn);
-        canvasInstance.GetComponent<FeedbackController>().AssignText("+ " + xpAmount + " Exp",1f);
+        canvasInstance.GetComponent<FeedbackController>().AssignText("+ " + Mathf.Round(xpAmount) + " Exp",1f);
     }
 
     // Feedback when leveling xp cubes

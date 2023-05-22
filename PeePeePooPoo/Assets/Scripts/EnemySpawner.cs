@@ -9,12 +9,20 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] enemyPrefabs;
     public Transform[] spawnPoints;
 
+    // Spawn rate increase
     public float initialSpawnDelay = 2f;
     public float spawnRate = 2f;
     public float spawnRateIncrease = 0.1f;
     public float startMaxEnemies;
     public float currentMaxEnemies;
     public float enemyIncreaseRate;
+    // Enemy stat increase
+    public float currentHealthMultiplier;
+    public float healthMultiplierIncrease;
+    public float currentXpMultiplier;
+    public float xPMultiplierIncrease;
+    public float currentDamageMultiplier;
+    public float damageMultiplierIncrease;
 
     int currentEnemyCount;
     float currentSpawnDelay;
@@ -49,8 +57,18 @@ public class EnemySpawner : MonoBehaviour
         {
             SpawnEnemy();
             timer = 0f;
-            currentSpawnDelay -= spawnRateIncrease;
+            // spawn rate increase
+            if (currentSpawnDelay > 0.2f)
+            {
+                currentSpawnDelay -= spawnRateIncrease;
+            }
             currentMaxEnemies = currentMaxEnemies + enemyIncreaseRate;
+            // Enemy health overtime increase
+            currentHealthMultiplier = currentHealthMultiplier + healthMultiplierIncrease;
+            // Enemy XP drops increase
+            currentXpMultiplier = currentXpMultiplier + xPMultiplierIncrease;
+            // Enemy damage increase
+            currentDamageMultiplier = currentDamageMultiplier + damageMultiplierIncrease;
         }
     }
 
@@ -62,29 +80,53 @@ public class EnemySpawner : MonoBehaviour
         {
             // case 0 - 45
             // Spawn small chase enemy
-            Instantiate(enemyPrefabs[0], spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position, transform.rotation);
+            GameObject enemyRef = Instantiate(enemyPrefabs[0], spawnPoints[Random.Range(0, spawnPoints.Length - 1)].position, transform.rotation);
             currentEnemyCount = currentEnemyCount + 1;
+            // Mutliply Health
+            enemyRef.GetComponent<EnemyStats>().maxHealth *= currentHealthMultiplier;
+            // Multiply XP Reward
+            enemyRef.GetComponent<EnemyStats>().expRewarded *= currentXpMultiplier;
+            // Multiply damage Reward
+            enemyRef.GetComponent<EnemyStats>().damage *= currentDamageMultiplier;
         }
         else if (rng > 45 && rng <= 90)
         {
             // case 45 - 90
             // Spawn small flying enemy
-            Instantiate(enemyPrefabs[1], spawnPoints[Random.Range(1, spawnPoints.Length - 1)].position, transform.rotation);
+            GameObject enemyRef = Instantiate(enemyPrefabs[1], spawnPoints[Random.Range(1, spawnPoints.Length - 1)].position, transform.rotation);
             currentEnemyCount = currentEnemyCount + 1;
+            // Mutliply Health
+            enemyRef.GetComponent<EnemyStats>().maxHealth *= currentHealthMultiplier;
+            // Multiply XP Reward
+            enemyRef.GetComponent<EnemyStats>().expRewarded *= currentXpMultiplier;
+            // Multiply damage Reward
+            enemyRef.GetComponent<EnemyStats>().damage *= currentDamageMultiplier;
         }
         else if (rng > 90 && rng <= 95)
         {
             // case 90 - 95
             // Spawn large chase enemy
-            Instantiate(enemyPrefabs[2], spawnPoints[Random.Range(2, spawnPoints.Length - 1)].position, transform.rotation);
+            GameObject enemyRef = Instantiate(enemyPrefabs[2], spawnPoints[Random.Range(2, spawnPoints.Length - 1)].position, transform.rotation);
             currentEnemyCount = currentEnemyCount + 3;
+            // Mutliply Health
+            enemyRef.GetComponent<EnemyStats>().maxHealth *= currentHealthMultiplier;
+            // Multiply XP Reward
+            enemyRef.GetComponent<EnemyStats>().expRewarded *= currentXpMultiplier;
+            // Multiply damage Reward
+            enemyRef.GetComponent<EnemyStats>().damage *= currentDamageMultiplier;
         }
         else if (rng > 95 && rng <= 100)
         {
             // case 95 - 100
             // Spawn large fly enemy
-            Instantiate(enemyPrefabs[3], spawnPoints[Random.Range(3, spawnPoints.Length - 1)].position, transform.rotation);
+            GameObject enemyRef = Instantiate(enemyPrefabs[3], spawnPoints[Random.Range(3, spawnPoints.Length - 1)].position, transform.rotation);
             currentEnemyCount = currentEnemyCount + 4;
+            // Mutliply Health
+            enemyRef.GetComponent<EnemyStats>().maxHealth *= currentHealthMultiplier;
+            // Multiply XP Reward
+            enemyRef.GetComponent<EnemyStats>().expRewarded *= currentXpMultiplier;
+            // Multiply damage Reward
+            enemyRef.GetComponent<EnemyStats>().damage *= currentDamageMultiplier;
         }
         
 

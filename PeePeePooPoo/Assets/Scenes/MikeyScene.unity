@@ -4709,6 +4709,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5781262692903637104, guid: 5ad506499c8fa0d49a5b7495def8cc71, type: 3}
   m_PrefabInstance: {fileID: 343707223}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &353989628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5967971620977333266, guid: f07d2b04706cbf144b469de7f9018c40, type: 3}
+  m_PrefabInstance: {fileID: 4014470471009756617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &353989629
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353989628}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.74988055
+  m_Height: 1.3967115
+  m_Direction: 1
+  m_Center: {x: 0.000009536743, y: 0.3, z: -0.000075250864}
 --- !u!1 &360488780
 GameObject:
   m_ObjectHideFlags: 0
@@ -8529,7 +8548,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690510244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.35, z: -2.3000002}
+  m_LocalPosition: {x: 0, y: 2.35, z: -2.8000002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2105606223}
@@ -11438,7 +11457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.35, z: -2.3000002}
+  m_LocalPosition: {x: 0, y: 2.35, z: -2.8000002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15220,7 +15239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1271931081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15249,10 +15268,16 @@ MonoBehaviour:
   - {fileID: 99733605}
   initialSpawnDelay: 2
   spawnRate: 2
-  spawnRateIncrease: 0.01
-  startMaxEnemies: 20
+  spawnRateIncrease: 0.1
+  startMaxEnemies: 10
   currentMaxEnemies: 0
   enemyIncreaseRate: 0.1
+  currentHealthMultiplier: 1
+  healthMultiplierIncrease: 0.025
+  currentXpMultiplier: 1
+  xPMultiplierIncrease: 0.001
+  currentDamageMultiplier: 1
+  damageMultiplierIncrease: 0.05
 --- !u!4 &1271931082
 Transform:
   m_ObjectHideFlags: 0
@@ -25001,7 +25026,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 7.5
+  m_CameraDistance: 8
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -25582,6 +25607,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3279527363599400002, guid: 83da57637f71edc43aa11cb74a0c3b30, type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 3279527363599400007, guid: 83da57637f71edc43aa11cb74a0c3b30, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -25679,6 +25708,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2716708283078460372, guid: 1cce81b97270b4044a772196c089d60b, type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2716708283078460375, guid: 1cce81b97270b4044a772196c089d60b, type: 3}
       propertyPath: m_Name
       value: Enemy_Flying_Small
@@ -25696,9 +25729,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3590438217276960046, guid: f07d2b04706cbf144b469de7f9018c40, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5967971620977333266, guid: f07d2b04706cbf144b469de7f9018c40, type: 3}
       propertyPath: m_Name
       value: Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967971620977333266, guid: f07d2b04706cbf144b469de7f9018c40, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967971620977333266, guid: f07d2b04706cbf144b469de7f9018c40, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967971620977333269, guid: f07d2b04706cbf144b469de7f9018c40, type: 3}
+      propertyPath: m_Drag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967971620977333269, guid: f07d2b04706cbf144b469de7f9018c40, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967971620977333269, guid: f07d2b04706cbf144b469de7f9018c40, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967971620977333271, guid: f07d2b04706cbf144b469de7f9018c40, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 1089
+      objectReference: {fileID: 0}
+    - target: {fileID: 5967971620977333289, guid: f07d2b04706cbf144b469de7f9018c40, type: 3}
+      propertyPath: maxHealth
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6456383119091502760, guid: f07d2b04706cbf144b469de7f9018c40, type: 3}
       propertyPath: m_RootOrder

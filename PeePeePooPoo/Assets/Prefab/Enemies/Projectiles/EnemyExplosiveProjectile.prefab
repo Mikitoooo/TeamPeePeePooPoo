@@ -130,7 +130,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2712729269736030436}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -227,7 +227,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 1
+  m_Autodestruct: 0
   m_Emitting: 1
 --- !u!114 &9165696164614179068
 MonoBehaviour:
@@ -241,13 +241,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4bcd27e2b8194449883ef5dc531a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathExplosion: {fileID: 3558045832786732332, guid: e7bf3e9f34111584985a310a4fc35ff3, type: 3}
+  deathExplosion: {fileID: 3469114973655882746, guid: c1e60ebe5cddefa4eb2b025318f30f39, type: 3}
   rb: {fileID: 2712729269736030433}
   damage: 0
+  explosionDamage: 0
   explosiveGrowth1: {fileID: 5937371205337142544}
   explosiveGrowth2: {fileID: 5937371203950733919}
   explosiveGrowth3: {fileID: 5937371204687289273}
-  growSize: 3.5
+  growSize: 4.5
 --- !u!1 &5937371203839705762
 GameObject:
   m_ObjectHideFlags: 0

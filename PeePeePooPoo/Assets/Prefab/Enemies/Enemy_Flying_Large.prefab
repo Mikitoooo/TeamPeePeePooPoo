@@ -289,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnValue: 4
   maxHealth: 250
+  damage: 25
   xpCube: {fileID: 5781262692903637107, guid: 5ad506499c8fa0d49a5b7495def8cc71, type: 3}
   deathProjectileSpawn: {fileID: 3279527363716174295}
   deathParticleVFX: {fileID: 1955495335381665188, guid: 117d383ff35a7854ea71ffa8da0ab6b8, type: 3}
@@ -321,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b6cb80a929654780a7699e2bd974d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageRef: {fileID: 3279527363599400002}
   projectile: {fileID: 2712729269736030436, guid: c744a80b3a82c7749ae971d140b11f39, type: 3}
   spawnLocation: {fileID: 3279527361784833699}
   shootDistance: 50
