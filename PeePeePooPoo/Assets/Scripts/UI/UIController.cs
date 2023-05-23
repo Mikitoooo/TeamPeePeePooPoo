@@ -14,6 +14,13 @@ public class UIController : MonoBehaviour
     [Header("Level Up Window")]
     public GameObject upgradeWindow;
     public Upgrades[] upgradeButton;
+    [Header("Health Fillbar")]
+    public Image healthFillbar;
+    [Header ("Display TImer")]
+    public Text timerText;
+
+    private float startTime;
+    private float elapsedTime;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +37,11 @@ public class UIController : MonoBehaviour
         upgradeWindow.SetActive(false);
         // Calculate xp needed
         UpdateOnXpCollection();
+        // Set player's healthbar
+        UpdateHealthBar();
+        // Set Start Time
+        startTime = Time.time;
+        elapsedTime = 0f;
     }
     private void Update()
     {
@@ -46,12 +58,23 @@ public class UIController : MonoBehaviour
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
         }
+
+        // Run Timer
+        elapsedTime = Time.time - startTime;
+        // Display the time
+        UpdateTimerDisplay(elapsedTime);
     }
 
     // Updates fill bar on level up
     public void UpdateOnXpCollection()
     {
         levelUpFillbar.DOFillAmount(PlayerStats.instance.currentExp / PlayerStats.instance.expRequired, 0.25f);
+    }
+
+    // Updates fill bar on health
+    public void UpdateHealthBar()
+    {
+        healthFillbar.DOFillAmount(PlayerStats.instance.currentHealth / PlayerStats.instance.maxHealth, 0.25f);
     }
     // Updates level text
     public void UpdateLevelNumbers()
@@ -89,5 +112,16 @@ public class UIController : MonoBehaviour
         {
             Debug.Log(number);
         }
+    }
+
+    private void UpdateTimerDisplay(float time)
+    {
+        // Format the time as minutes and seconds
+        int minutes = Mathf.FloorToInt(time / 60f);
+        int seconds = Mathf.FloorToInt(time % 60f);
+        string timeString = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        // Update the timer text
+        timerText.text = timeString;
     }
 }

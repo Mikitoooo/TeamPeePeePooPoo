@@ -21,7 +21,7 @@ public class EnemyProjectileCollision : MonoBehaviour
         {
             // Damage the player
             collision.gameObject.GetComponent<PlayerStats>().currentHealth -= damage;
-
+            UIController.instance.UpdateHealthBar();
             hit = true;
         }
 

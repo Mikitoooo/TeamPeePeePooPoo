@@ -32,6 +32,7 @@ public class EnemyExplosion : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.currentHealth -= damage;
+                UIController.instance.UpdateHealthBar();
             }
 
             hit = true;

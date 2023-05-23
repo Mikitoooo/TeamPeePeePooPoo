@@ -22,7 +22,7 @@ public class EnemyExplosiveProjectile : MonoBehaviour
         {
             // Damage the player
             collision.gameObject.GetComponent<PlayerStats>().currentHealth -= damage;
-
+            UIController.instance.UpdateHealthBar();
             hit = true;
         }
 

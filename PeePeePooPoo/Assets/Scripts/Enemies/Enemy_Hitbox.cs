@@ -34,6 +34,7 @@ public class Enemy_Hitbox : MonoBehaviour
 
             other.transform.gameObject.GetComponent<Rigidbody>().AddForce(this.transform.forward * pushbackAmount, ForceMode.Impulse);
             other.GetComponent<PlayerStats>().currentHealth = other.GetComponent<PlayerStats>().currentHealth - damage;
+            UIController.instance.UpdateHealthBar();
             collidedWithPlayer = true;
         }
     }
