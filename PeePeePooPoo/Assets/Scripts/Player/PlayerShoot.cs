@@ -55,6 +55,23 @@ public class PlayerShoot : MonoBehaviour
             StartCoroutine(ResetFire(fireRate));
             canShoot = false;
         }
+        //Check if player is aiming at target
+        IsAimingAtEnemy();
+    }
+
+    void IsAimingAtEnemy()
+    {
+        // Insert your aiming logic here
+        // You can use a raycast or any other method to determine if the enemy is within the player's aim
+        RaycastHit HitInfoAiming;
+        Transform cameraTransformAiming = Camera.main.transform;
+        if (Physics.Raycast(cameraTransformAiming.position, cameraTransformAiming.forward, out HitInfoAiming, 1000.0f, layerMask))
+        {
+            if (HitInfoAiming.collider.gameObject.GetComponent<EnemyStats>())
+            {
+                HitInfoAiming.collider.gameObject.GetComponent<EnemyStats>().HealthBarAppear();
+            }
+        }
     }
 
     void HoldDownShoot()

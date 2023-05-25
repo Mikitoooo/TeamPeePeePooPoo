@@ -14,7 +14,7 @@ public class ProjectileCollision : MonoBehaviour
         if(collision.gameObject.GetComponent<EnemyStats>())
         {
             //deal damage
-            collision.gameObject.GetComponent<EnemyStats>().health = collision.gameObject.GetComponent<EnemyStats>().health - damage;
+            collision.gameObject.GetComponent<EnemyStats>().TakeDamage(damage);
             //Call death event if the target dies
             if (collision.gameObject.GetComponent<EnemyStats>().health <= 0)
                 collision.gameObject.GetComponent<EnemyStats>().DeathEvent();

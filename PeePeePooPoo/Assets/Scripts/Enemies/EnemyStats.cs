@@ -1,7 +1,9 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyStats : MonoBehaviour
 {
@@ -11,6 +13,11 @@ public class EnemyStats : MonoBehaviour
     public GameObject xpCube;
     public Transform deathProjectileSpawn;
     public GameObject deathParticleVFX;
+    public Image healthBar;
+    public Image healthBarBackdrop;
+    float healthBarDuration = 5f; // Duration for which the health bar will remain active
+    private bool isHealthBarActive = false; // Flag to track if the health bar is active
+    private float healthBarTimer = 0f;
     //public AudioSource deathAudioSource;
     [HideInInspector]
     public float health;
@@ -20,8 +27,14 @@ public class EnemyStats : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        //healthBar.gameObject.SetActive(false);
     }
 
+    public void TakeDamage(float damageAmount)
+    {
+        health -= damageAmount;
+        UpdateHealthBar(health, maxHealth);
+    }
     public void DeathEvent()
     {
         // Spawn XP block
@@ -37,5 +50,46 @@ public class EnemyStats : MonoBehaviour
             EnemySpawner.instance.EnemyDestroyed(spawnValue);
         // Destroy gameobject
         Destroy(this.gameObject);
+    }
+
+    public void UpdateHealthBar(float currentHealth, float maxHealth)
+    {
+        healthBar.DOFillAmount(currentHealth / maxHealth, 0.5f); // Set the health bar's value based on the current health
+    }
+
+    public void HealthBarAppear()
+    {
+        //Get the alpha values
+        var tempColor = healthBar.color;
+        tempColor.a = 1f;
+        var tempColor2 = healthBarBackdrop.color;
+        tempColor2.a = 1f;
+
+        healthBar.DOColor(tempColor, 0.5f);
+        healthBarBackdrop.DOColor(tempColor2, 0.5f);
+
+        isHealthBarActive = true; // Set the flag to true
+        healthBarTimer = 0f; // Reset the timer
+    }
+    void Update()
+    {
+        if (isHealthBarActive)
+        {
+            healthBarTimer += Time.deltaTime; // Increment the timer
+
+            if (healthBarTimer >= healthBarDuration)
+            {
+                //Get the alpha values
+                var tempColor = healthBar.color;
+                tempColor.a = 0;
+                var tempColor2 = healthBarBackdrop.color;
+                tempColor2.a = 0;
+
+                healthBar.DOColor(tempColor, 0.5f);
+                healthBarBackdrop.DOColor(tempColor2, 0.5f);
+
+                isHealthBarActive = false; // Set the flag to false
+            }
+        }
     }
 }
