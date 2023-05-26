@@ -9,6 +9,8 @@ public class PlayerStats : MonoBehaviour
 
     public float maxHealth;
     public float currentHealth;
+    public float healthRegenRate;
+    public float healthRegenRateIncrease;
 
     // leveling stuff
     public float currentExp;
@@ -37,6 +39,8 @@ public class PlayerStats : MonoBehaviour
         UpdateExpRequirments();
         //Set health to max health
         currentHealth = maxHealth;
+        // Begin Health Regen
+        StartCoroutine(HeatlhRegen());
     }
 
     public void LevelUp()
@@ -80,5 +84,19 @@ public class PlayerStats : MonoBehaviour
         //instantiate canvas
         GameObject canvasInstance = Instantiate(feedbackCanvas, canvasSpawn.transform.position, canvasSpawn.transform.rotation,canvasSpawn);
         canvasInstance.GetComponent<FeedbackController>().AssignText(upgradePurchased,2f);
+    }
+
+    IEnumerator HeatlhRegen()
+    {
+        yield return new WaitForSeconds(1);
+        if(currentHealth < maxHealth)
+        {
+            currentHealth += healthRegenRate;
+            UIController.instance.UpdateHealthBar();
+
+            if (currentHealth > maxHealth)
+                currentHealth = maxHealth;
+        }
+        StartCoroutine(HeatlhRegen());
     }
 }
