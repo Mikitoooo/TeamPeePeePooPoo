@@ -27,31 +27,41 @@ public class Upgrades : MonoBehaviour
                 // Increase rate of fires
                 upgradeTitle.text = "Rate of Fire";
                 ButtonImage.sprite = uiImages[0];
-                //upgradeButton.onClick.AddListener(IncreaseFireRate);
                 break;
             case 2:
                 // Increase damage
                 upgradeTitle.text = "Increase Damage";
                 ButtonImage.sprite = uiImages[1];
-                //upgradeButton.onClick.AddListener(IncreaseDamage);
                 break;
             case 3:
                 // Add a slime buddy
                 upgradeTitle.text = "Slime Buddy";
                 ButtonImage.sprite = uiImages[2];
-                //upgradeButton.onClick.AddListener(AddSlimeBuddy);
                 break;
             case 4:
                 // increase movement speed
                 upgradeTitle.text = "Movement Speed";
                 ButtonImage.sprite = uiImages[3];
-                //upgradeButton.onClick.AddListener(IncreaseMovementSpeed);
                 break;
             case 5:
                 // Gain additional jump
                 upgradeTitle.text = "Extra Jump";
                 ButtonImage.sprite = uiImages[4];
-                //upgradeButton.onClick.AddListener(AddExtraJump);
+                break;
+            case 6:
+                // Jump Height
+                upgradeTitle.text = "Jump Height";
+                ButtonImage.sprite = uiImages[5];
+                break;
+            case 7:
+                // Health Regen Increase
+                upgradeTitle.text = "Health Regen";
+                ButtonImage.sprite = uiImages[6];
+                break;
+            case 8:
+                // Dash Force
+                upgradeTitle.text = "Dash Force";
+                ButtonImage.sprite = uiImages[7];
                 break;
         }
     }
@@ -85,6 +95,21 @@ public class Upgrades : MonoBehaviour
                 AddExtraJump();
                 PlayerStats.instance.LevelUpFeedback("+ Extra Jump");
                 break;
+            case 6:
+                // Jump Height
+                AddJumpHeight();
+                PlayerStats.instance.LevelUpFeedback("+ Jump Height");
+                break;
+            case 7:
+                // Health Regen Increase
+                AddHealthRegen();
+                PlayerStats.instance.LevelUpFeedback("+ Health Regen");
+                break;
+            case 8:
+                // Dash Force
+                AddDashForce();
+                PlayerStats.instance.LevelUpFeedback("+ Dash Force");
+                break;
         }
     }
 
@@ -97,7 +122,6 @@ public class Upgrades : MonoBehaviour
         //Hide Upgrade window
         upgradeWindow.SetActive(false);
 
-        print("Upgraded fire rate");
     }
 
     void IncreaseDamage()
@@ -107,7 +131,6 @@ public class Upgrades : MonoBehaviour
         //Hide Upgrade window
         upgradeWindow.SetActive(false);
 
-        print("Upgraded Damage");
     }
 
     void AddSlimeBuddy()
@@ -117,7 +140,6 @@ public class Upgrades : MonoBehaviour
         //Hide Upgrade window
         upgradeWindow.SetActive(false);
 
-        print("Added slime buddy");
     }
 
     void IncreaseMovementSpeed()
@@ -127,7 +149,6 @@ public class Upgrades : MonoBehaviour
         //Hide Upgrade window
         upgradeWindow.SetActive(false);
 
-        print("Upgraded movement speed");
     }
 
     void AddExtraJump()
@@ -137,7 +158,33 @@ public class Upgrades : MonoBehaviour
         //Hide Upgrade window
         upgradeWindow.SetActive(false);
 
-        print("Added extra jump");
+    }
+
+    void AddJumpHeight()
+    {
+        PlayerController.instance.jumpForce = PlayerController.instance.jumpForce + 2;
+
+        //Hide Upgrade window
+        upgradeWindow.SetActive(false);
+
+    }
+
+    void AddHealthRegen()
+    {
+        PlayerStats.instance.healthRegenRate = PlayerStats.instance.healthRegenRate + PlayerStats.instance.healthRegenRateIncrease;
+
+        //Hide Upgrade window
+        upgradeWindow.SetActive(false);
+
+    }
+
+    void AddDashForce()
+    {
+        PlayerController.instance.dashSpeed = PlayerController.instance.dashSpeed + 50;
+
+        //Hide Upgrade window
+        upgradeWindow.SetActive(false);
+
     }
 
 }

@@ -90,7 +90,7 @@ public class UIController : MonoBehaviour
     {
         int[] randomNumbers = new int[3];
         int min = 1;
-        int max = 5;
+        int max = 8;
 
         for (int i = 0; i < 3; i++)
         {

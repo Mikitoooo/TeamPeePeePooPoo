@@ -6371,9 +6371,10 @@ GameObject:
   - component: {fileID: 5967971620977333268}
   - component: {fileID: 5967971620977333271}
   - component: {fileID: 5967971620977333289}
+  - component: {fileID: 634623167}
   m_Layer: 8
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6403,8 +6404,8 @@ Rigidbody:
   m_GameObject: {fileID: 5967971620977333266}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 0.5
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -6487,7 +6488,7 @@ MonoBehaviour:
   slimeBuddyObject: {fileID: 2028435110428146618, guid: 3144d2057c117124aa310ba50cce806c, type: 3}
   layerMask:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 1089
 --- !u!114 &5967971620977333289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6500,12 +6501,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5109436dcadedfd449035d1de7e996bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 200
   currentHealth: 0
+  levelUpHealthIncrease: 0
+  healthRegenRate: 3
+  healthRegenRateIncrease: 3
   currentExp: 0
   expRequired: 0
   playerLevel: 1
   rateOfFireEV: 1
-  feedbackCanvas: {fileID: 1827502050531170549, guid: 726d2b1b708529f45b8aaee0246fa944, type: 3}
-  canvasSpawn: {fileID: 4014470471366854508}
+  feedbackCanvas: {fileID: 1068922494213936398, guid: 139fa86cd07d33e4fb256797448abc87, type: 3}
+  canvasSpawn: {fileID: 0}
   playerToGrow: {fileID: 6456383119091502760}
+--- !u!136 &634623167
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5967971620977333266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.74988055
+  m_Height: 1.3967115
+  m_Direction: 1
+  m_Center: {x: 0.000009536743, y: 0.3, z: -0.000075250864}

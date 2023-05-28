@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour
 
     public float maxHealth;
     public float currentHealth;
+    public float levelUpHealthIncrease;
     public float healthRegenRate;
     public float healthRegenRateIncrease;
 
@@ -61,6 +62,10 @@ public class PlayerStats : MonoBehaviour
         UIController.instance.upgradeWindow.SetActive(true);
         // Assign Button Upgrades
         UIController.instance.AssignUpgrades();
+        // Increase Health on Level Up
+        maxHealth = maxHealth + levelUpHealthIncrease;
+        currentHealth = currentHealth + levelUpHealthIncrease;
+        UIController.instance.UpdateHealthBar();
     }
     //Updates xp requirement amounts
     public void UpdateExpRequirments()

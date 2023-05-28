@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 50);
     }
 
     void MyInput()
