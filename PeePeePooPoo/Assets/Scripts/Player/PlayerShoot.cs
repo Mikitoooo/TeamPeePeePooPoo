@@ -48,7 +48,7 @@ public class PlayerShoot : MonoBehaviour
             RaycastHit HitInfo;
 
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out HitInfo, 1000.0f, layerMask))
-                Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 1000, Color.yellow,100);
+                //Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 1000, Color.yellow,100);
             
             FireProjectile(HitInfo.point);
             //print(HitInfo.collider.gameObject);

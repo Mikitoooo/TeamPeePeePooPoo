@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 2716708283078460382}
   m_Layer: 10
   m_Name: Enemy_Flying_Small
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -529,6 +529,9 @@ MonoBehaviour:
   rateOfFireMax: 10
   deviationAmount: 0
   shotsFired: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1345
   projectileBuildUpSize: {x: 0.57586, y: 0.57586, z: 0.57586}
   projectileBuildUpObject: {fileID: 2716708283539154009}
 --- !u!1 &2716708283479928307

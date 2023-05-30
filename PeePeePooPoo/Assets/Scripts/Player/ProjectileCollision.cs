@@ -6,13 +6,16 @@ public class ProjectileCollision : MonoBehaviour
 {
     public GameObject deathExplosion;
     public float damage;
+
+    bool hit = false;
     private void OnCollisionEnter(Collision collision)
     {
         // instantiante impact particle effect
         GameObject deathExplosionClone = Instantiate(deathExplosion, transform.position, transform.rotation);
         // Check if the target has a enemy health script attached
-        if(collision.gameObject.GetComponent<EnemyStats>())
+        if(collision.gameObject.GetComponent<EnemyStats>() && hit == false)
         {
+            hit = true;
             //deal damage
             collision.gameObject.GetComponent<EnemyStats>().TakeDamage(damage);
             //Call death event if the target dies

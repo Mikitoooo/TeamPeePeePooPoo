@@ -180,7 +180,7 @@ public class Upgrades : MonoBehaviour
 
     void AddDashForce()
     {
-        PlayerController.instance.dashSpeed = PlayerController.instance.dashSpeed + 50;
+        PlayerController.instance.dashDistance = PlayerController.instance.dashDistance + 2;
 
         //Hide Upgrade window
         upgradeWindow.SetActive(false);

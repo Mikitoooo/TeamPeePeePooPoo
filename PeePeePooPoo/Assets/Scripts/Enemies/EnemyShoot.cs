@@ -17,6 +17,7 @@ public class EnemyShoot : MonoBehaviour
     public float rateOfFireMax;
     public float deviationAmount;
     public int shotsFired;
+    public LayerMask layerMask;
 
     public Vector3 projectileBuildUpSize;
     public Transform projectileBuildUpObject;
@@ -35,9 +36,20 @@ public class EnemyShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(this.transform.position, player.transform.position) < shootDistance && canShoot)
+        Vector3 direction = player.transform.position - transform.position;
+        //Check if Slime buddy has a line of sight to the targeted enemy
+        RaycastHit HitInfo;
+        Physics.Raycast(transform.position, direction, out HitInfo, 30, layerMask);
+        Debug.DrawRay(transform.position, direction * 30, Color.yellow);
+        if (HitInfo.collider != null)
         {
-            StartCoroutine(FireShot());
+            if (HitInfo.collider.gameObject.tag == "Player")
+            {
+                if (Vector3.Distance(this.transform.position, player.transform.position) < shootDistance && canShoot)
+                {
+                    StartCoroutine(FireShot());
+                }
+            }
         }
     }
 

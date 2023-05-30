@@ -211,6 +211,9 @@ MonoBehaviour:
   projectile: {fileID: 7056299205372000108, guid: a7d8689b0b4f8aa498c03ee5a6ded420, type: 3}
   projectileSpeed: 75
   fireRate: 0.5
-  fireRateEv: 0
-  fireRateIncrease: 0
+  fireRateEv: 0.5
+  fireRateIncrease: 0.1
   radius: 30
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1089

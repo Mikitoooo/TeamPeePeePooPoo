@@ -13,6 +13,7 @@ public class SlimeBuddyBrain : MonoBehaviour
     bool canShoot = true;
 
     public float radius;
+    public LayerMask layerMask;
     private EnemyStats closestEnemy;
 
     // Update is called once per frame
@@ -37,11 +38,21 @@ public class SlimeBuddyBrain : MonoBehaviour
             // The closest enemy has been found, do something with it
             //Debug.Log("Closest enemy detected: " + closestEnemy.gameObject.name);
             transform.LookAt(closestEnemy.transform);
-            if (canShoot)
+            Vector3 direction = closestEnemy.transform.position - transform.position;
+            //Check if Slime buddy has a line of sight to the targeted enemy
+            RaycastHit HitInfo;
+            Physics.Raycast(transform.position, direction, out HitInfo, 30, layerMask);
+            if (HitInfo.collider != null)
             {
-                FireProjectile(closestEnemy.transform.position);
-                StartCoroutine(ResetFire(fireRate));
-                canShoot = false;
+                if (HitInfo.collider.gameObject.tag == "Enemy")
+                {
+                    if (canShoot)
+                    {
+                        FireProjectile(closestEnemy.transform.position);
+                        StartCoroutine(ResetFire(fireRate));
+                        canShoot = false;
+                    }
+                }
             }
         }
 

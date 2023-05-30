@@ -47,11 +47,11 @@ public class PlayerStats : MonoBehaviour
     public void LevelUp()
     {
         // slime scale growth amount
-        float growthAmount = 0.2f;
+        float growthAmount = 0.5f;
         // update the level requirements
         UpdateExpRequirments();
         // increase the size of the player
-        playerToGrow.DOScale(new Vector3(playerToGrow.localScale.x + growthAmount, playerToGrow.localScale.y + growthAmount, playerToGrow.localScale.z + growthAmount),0.5f);
+        playerToGrow.DOScale(new Vector3(Mathf.Pow(playerToGrow.localScale.x, growthAmount), Mathf.Pow(playerToGrow.localScale.y, growthAmount), Mathf.Pow(playerToGrow.localScale.z, growthAmount)),0.5f);
         // Adjust camera distance on level up
         CameraAdjustToScale.instance.AdjustCameraDistance();
         //Reset player xp to 0
@@ -66,6 +66,8 @@ public class PlayerStats : MonoBehaviour
         maxHealth = maxHealth + levelUpHealthIncrease;
         currentHealth = currentHealth + levelUpHealthIncrease;
         UIController.instance.UpdateHealthBar();
+        // Update Exp bar
+        UIController.instance.UpdateOnXpCollection();
     }
     //Updates xp requirement amounts
     public void UpdateExpRequirments()

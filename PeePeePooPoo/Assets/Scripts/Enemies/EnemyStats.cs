@@ -33,6 +33,7 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(float damageAmount)
     {
         health -= damageAmount;
+        HealthBarAppear();
         UpdateHealthBar(health, maxHealth);
     }
     public void DeathEvent()

@@ -19,7 +19,7 @@ public class ExperiencePickUpCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            print("Touched player");
+            //print("Touched player");
             // play pick up sound
             //pickUpAudioSource.Play();
 

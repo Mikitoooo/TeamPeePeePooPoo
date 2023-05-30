@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 299500534}
   - component: {fileID: 299500535}
   - component: {fileID: 299500536}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthbarForground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 490090530}
   - component: {fileID: 490090529}
   - component: {fileID: 490090528}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 1098045111}
   - component: {fileID: 1098045110}
   - component: {fileID: 1098045109}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: HealthbarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 5177438391547166716}
   - component: {fileID: 5177438391547166717}
   - component: {fileID: 5177438391547166718}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,9 +392,9 @@ GameObject:
   - component: {fileID: 5177438391695237995}
   - component: {fileID: 5177438391695237975}
   - component: {fileID: 5177438391695237974}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy_Chase_Large
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

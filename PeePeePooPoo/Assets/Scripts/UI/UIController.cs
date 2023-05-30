@@ -108,10 +108,6 @@ public class UIController : MonoBehaviour
             upgradeButton[i].AssignUpgradeToButton();
         }
 
-        foreach (int number in randomNumbers)
-        {
-            Debug.Log(number);
-        }
     }
 
     private void UpdateTimerDisplay(float time)
