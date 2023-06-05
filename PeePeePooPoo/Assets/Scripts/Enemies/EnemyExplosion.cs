@@ -31,6 +31,7 @@ public class EnemyExplosion : MonoBehaviour
             PlayerStats playerHealth = other.GetComponent<PlayerStats>();
             if (playerHealth != null)
             {
+                SoundsManager.instance.PlayerTakesDamage();
                 playerHealth.currentHealth -= damage;
                 UIController.instance.UpdateHealthBar();
             }

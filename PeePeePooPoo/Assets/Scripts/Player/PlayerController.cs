@@ -208,6 +208,8 @@ public class PlayerController : MonoBehaviour
             Vector3 dashDirection = transform.forward;
             StartCoroutine(PerformDash(dashDirection));
         }
+
+        SoundsManager.instance.PlayerDash();
     }
 
     IEnumerator PerformDash(Vector3 dashDirection)
@@ -301,6 +303,8 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
+        SoundsManager.instance.PlayerJump();
+
         //reset y velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 

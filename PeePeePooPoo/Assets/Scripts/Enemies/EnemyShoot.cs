@@ -73,6 +73,9 @@ public class EnemyShoot : MonoBehaviour
         // Add force to the projectile
         rb.AddForce(randomDirection * projectileSpeed, ForceMode.Impulse);
 
+        // Play sound effect
+        SoundsManager.instance.EnemyShoot(this.GetComponent<AudioSource>());
+
         // Add damage to the projectile
         if(projectileInstance.GetComponent<EnemyProjectileCollision>() != null)
         {

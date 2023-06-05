@@ -6369,6 +6369,7 @@ GameObject:
   - component: {fileID: 5967971620977333268}
   - component: {fileID: 5967971620977333271}
   - component: {fileID: 5967971620977333289}
+  - component: {fileID: 634623167}
   m_Layer: 8
   m_Name: Slime
   m_TagString: Player
@@ -6436,26 +6437,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6fa0e55311abf4da90f0db35fd562a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 9
   groundDrag: 5
-  feet: {fileID: 0}
+  feet: {fileID: 3029053096065429474}
   jumpDetectionPoint: {fileID: 4014470471003389101}
   jumpForce: 8
   jumpCooldown: 0.25
-  airMultiplier: 0.4
+  airMultiplier: 0.7
   maxNumberOfJumps: 2
   slimeObject: {fileID: 6673764535792943241}
   jumpEmitter: {fileID: 4014470471631271294}
-  dashDistance: 0
-  dashDuration: 0
-  dashCooldown: 2
+  dashDistance: 7
+  dashDuration: 0.2
+  dashCooldown: 1.5
   playerHeight: 1
   whatIsJumpable:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1089
   whatIsSurface:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   orientation: {fileID: 4014470472303302061}
 --- !u!114 &5967971620977333271
 MonoBehaviour:
@@ -6474,7 +6475,7 @@ MonoBehaviour:
   projectileSpeed: 75
   spawnLocation: {fileID: 4014470470516918882}
   deviationAngle: 1
-  fireRate: 0.5
+  fireRate: 0.45
   slimeBuddySpawns:
   - {fileID: 4014470471254119019}
   - {fileID: 4014470470324647798}
@@ -6517,3 +6518,99 @@ MonoBehaviour:
   feedbackCanvas: {fileID: 1068922494213936398, guid: 139fa86cd07d33e4fb256797448abc87, type: 3}
   canvasSpawn: {fileID: 0}
   playerToGrow: {fileID: 6456383119091502760}
+--- !u!82 &634623167
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5967971620977333266}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

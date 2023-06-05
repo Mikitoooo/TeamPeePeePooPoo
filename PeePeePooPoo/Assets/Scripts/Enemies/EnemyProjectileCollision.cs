@@ -24,7 +24,7 @@ public class EnemyProjectileCollision : MonoBehaviour
             UIController.instance.UpdateHealthBar();
             hit = true;
         }
-
+        SoundsManager.instance.PlayerTakesDamage();
         // instantiante impact particle effect
         GameObject deathExplosionClone = Instantiate(deathExplosion, transform.position, transform.rotation);
         // Destroy the projectile on contact

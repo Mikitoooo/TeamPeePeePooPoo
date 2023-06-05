@@ -19,9 +19,8 @@ public class ExperiencePickUpCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //print("Touched player");
-            // play pick up sound
-            //pickUpAudioSource.Play();
+
+            SoundsManager.instance.PlayerPickUp();
 
             // update exp amount
             PlayerStats.instance.currentExp = PlayerStats.instance.currentExp + expCube.GetComponent<ExperienceCube>().expRewarded;

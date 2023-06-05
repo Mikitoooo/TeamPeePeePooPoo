@@ -42,6 +42,8 @@ public class PlayerStats : MonoBehaviour
         currentHealth = maxHealth;
         // Begin Health Regen
         StartCoroutine(HeatlhRegen());
+        // Initialize Audio Source
+        SoundsManager.instance.playerAudioSource = this.GetComponent<AudioSource>();
     }
 
     public void LevelUp()
@@ -68,6 +70,8 @@ public class PlayerStats : MonoBehaviour
         UIController.instance.UpdateHealthBar();
         // Update Exp bar
         UIController.instance.UpdateOnXpCollection();
+        // Player Sound Effect
+        SoundsManager.instance.PlayerLevelUp();
     }
     //Updates xp requirement amounts
     public void UpdateExpRequirments()

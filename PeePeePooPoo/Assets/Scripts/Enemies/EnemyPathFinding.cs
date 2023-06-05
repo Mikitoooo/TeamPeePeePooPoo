@@ -60,6 +60,9 @@ public class EnemyPathFinding : MonoBehaviour
 
         canAttack = false;
 
+        // Play sound effect
+        SoundsManager.instance.EnemyCharge(this.GetComponent<AudioSource>());
+
         Invoke("AttackCooldown", attackCooldown);
     }
 

@@ -25,7 +25,7 @@ public class EnemyExplosiveProjectile : MonoBehaviour
             UIController.instance.UpdateHealthBar();
             hit = true;
         }
-
+        SoundsManager.instance.PlayerTakesDamage();
         // stop projectile on contact
         rb.constraints = RigidbodyConstraints.FreezePosition;
         // Start explosion

@@ -35,6 +35,8 @@ public class EnemyStats : MonoBehaviour
         health -= damageAmount;
         HealthBarAppear();
         UpdateHealthBar(health, maxHealth);
+        // Play sound effect
+        SoundsManager.instance.EnemyTakesDamage(this.GetComponent<AudioSource>());
     }
     public void DeathEvent()
     {
@@ -46,8 +48,10 @@ public class EnemyStats : MonoBehaviour
         xpInstance.GetComponent<ExperienceCube>().expRewarded = expRewarded;
         //Play death particle
         GameObject deathVFXClone = Instantiate(deathParticleVFX, deathProjectileSpawn.position, Quaternion.identity);
+        // Play sound effect
+        SoundsManager.instance.EnemyDies(deathVFXClone.GetComponent<AudioSource>());
         // Decrease count from spawner
-        if(EnemySpawner.instance != null)
+        if (EnemySpawner.instance != null)
             EnemySpawner.instance.EnemyDestroyed(spawnValue);
         // Destroy gameobject
         Destroy(this.gameObject);

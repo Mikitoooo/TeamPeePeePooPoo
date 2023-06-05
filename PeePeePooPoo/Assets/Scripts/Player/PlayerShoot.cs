@@ -108,6 +108,8 @@ public class PlayerShoot : MonoBehaviour
 
         // Reticle Kick
         ReticleController.instance.ReticleKick();
+
+        SoundsManager.instance.PlayerShoot();
     }
 
     public void SpawnSlimeBuddy()
