@@ -22,7 +22,7 @@ public class SoundsManager : MonoBehaviour
     [Header("World Music")]
     public AudioClip music;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //Ensure there's only once instance of the player stats script
         if (instance != null && instance != this)
@@ -33,6 +33,9 @@ public class SoundsManager : MonoBehaviour
         {
             instance = this;
         }
+
+        this.GetComponent<AudioSource>().clip = music;
+        this.GetComponent<AudioSource>().Play();
     }
 
     // PLAYER SOUND EFFECTS
