@@ -9,7 +9,6 @@ public class UIController : MonoBehaviour
     public static UIController instance;
     [Header("Level Up Fillbar")]
     public Image levelUpFillbar;
-    public Text currentLevelText;
     public Text nextLevelText;
     [Header("Level Up Window")]
     public GameObject upgradeWindow;
@@ -82,7 +81,6 @@ public class UIController : MonoBehaviour
         //Next Level number
         int nextLevel = PlayerStats.instance.playerLevel + 1;
 
-        currentLevelText.text = PlayerStats.instance.playerLevel.ToString();
         nextLevelText.text = nextLevel.ToString();
     }
 

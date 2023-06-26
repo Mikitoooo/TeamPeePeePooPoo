@@ -25,7 +25,7 @@ public class PlayerStats : MonoBehaviour
     public Transform playerToGrow;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         //Ensure there's only once instance of the player stats script
         if (instance != null && instance != this)
