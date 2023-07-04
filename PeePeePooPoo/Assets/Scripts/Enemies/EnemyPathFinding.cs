@@ -27,7 +27,6 @@ public class EnemyPathFinding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //print(Vector3.Distance(this.transform.position, PlayerStats.instance.gameObject.transform.position).ToString());
 
         if (Vector3.Distance(this.transform.position, player.position) > attackDistance)
         {
@@ -42,6 +41,7 @@ public class EnemyPathFinding : MonoBehaviour
             else
                 agent.destination = player.position;
         }
+        
     }
 
     void AttackCooldown()

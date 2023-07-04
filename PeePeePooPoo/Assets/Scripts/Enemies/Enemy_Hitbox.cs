@@ -36,6 +36,10 @@ public class Enemy_Hitbox : MonoBehaviour
             other.GetComponent<PlayerStats>().currentHealth = other.GetComponent<PlayerStats>().currentHealth - damage;
             UIController.instance.UpdateHealthBar();
             collidedWithPlayer = true;
+            if (other.GetComponent<PlayerStats>().currentHealth <= 0)
+            {
+                UIController.instance.PlayerDiedUI();
+            }
         }
     }
 

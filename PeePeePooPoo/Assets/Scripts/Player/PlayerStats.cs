@@ -96,18 +96,20 @@ public class PlayerStats : MonoBehaviour
         GameObject canvasInstance = Instantiate(feedbackCanvas, canvasSpawn.transform.position, canvasSpawn.transform.rotation,canvasSpawn);
         canvasInstance.GetComponent<FeedbackController>().AssignText(upgradePurchased,2f);
     }
-
     IEnumerator HeatlhRegen()
     {
         yield return new WaitForSeconds(1);
-        if(currentHealth < maxHealth)
+        if (currentHealth > 0)
         {
-            currentHealth += healthRegenRate;
-            UIController.instance.UpdateHealthBar();
+            if (currentHealth < maxHealth)
+            {
+                currentHealth += healthRegenRate;
+                UIController.instance.UpdateHealthBar();
 
-            if (currentHealth > maxHealth)
-                currentHealth = maxHealth;
+                if (currentHealth > maxHealth)
+                    currentHealth = maxHealth;
+            }
+            StartCoroutine(HeatlhRegen());
         }
-        StartCoroutine(HeatlhRegen());
     }
 }

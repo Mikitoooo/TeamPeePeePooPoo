@@ -71,25 +71,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StickToGround();
 
-        //ground check
-        GroundCheck();
+            StickToGround();
 
-        MyInput();
-        SpeedControl();
+            //ground check
+            GroundCheck();
 
-        //Handle drag
-        if (grounded)
+        if (!UIController.instance.pause)
         {
-            rb.drag = groundDrag;
-            if (numberOfJumps != maxNumberOfJumps && !jumping)
+            MyInput();
+            SpeedControl();
+
+            //Handle drag
+            if (grounded)
             {
-                numberOfJumps = maxNumberOfJumps;
+                rb.drag = groundDrag;
+                if (numberOfJumps != maxNumberOfJumps && !jumping)
+                {
+                    numberOfJumps = maxNumberOfJumps;
+                }
             }
+            else
+                rb.drag = 0;
         }
-        else
-            rb.drag = 0;
     }
 
     private void FixedUpdate()

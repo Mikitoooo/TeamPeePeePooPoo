@@ -20,6 +20,7 @@ public class FlyingEnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         //rotate the enemy towards the player
         RotateEnemyTowardsPlayer();
 
@@ -31,6 +32,7 @@ public class FlyingEnemyMovement : MonoBehaviour
 
         // set the new position for the enemy's Rigidbody component
         rb.MovePosition(newPosition);
+        
     }
 
     void RotateEnemyTowardsPlayer()

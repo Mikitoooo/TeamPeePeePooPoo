@@ -36,6 +36,7 @@ public class EnemyShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Vector3 direction = player.transform.position - transform.position;
         //Check if Slime buddy has a line of sight to the targeted enemy
         RaycastHit HitInfo;
@@ -51,6 +52,7 @@ public class EnemyShoot : MonoBehaviour
                 }
             }
         }
+        
     }
 
     void FireProjectile(Vector3 targetPoint)

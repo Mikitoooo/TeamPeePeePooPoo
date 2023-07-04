@@ -34,6 +34,10 @@ public class EnemyExplosion : MonoBehaviour
                 SoundsManager.instance.PlayerTakesDamage();
                 playerHealth.currentHealth -= damage;
                 UIController.instance.UpdateHealthBar();
+                if (other.GetComponent<PlayerStats>().currentHealth <= 0)
+                {
+                    UIController.instance.PlayerDiedUI();
+                }
             }
 
             hit = true;

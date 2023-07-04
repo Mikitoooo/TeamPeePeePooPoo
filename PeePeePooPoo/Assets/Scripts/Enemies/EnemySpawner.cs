@@ -51,6 +51,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         timer += Time.deltaTime;
 
         if (timer >= currentSpawnDelay && currentEnemyCount < currentMaxEnemies)
@@ -70,6 +71,7 @@ public class EnemySpawner : MonoBehaviour
             // Enemy damage increase
             currentDamageMultiplier = currentDamageMultiplier + damageMultiplierIncrease;
         }
+        
     }
 
     private void SpawnEnemy()

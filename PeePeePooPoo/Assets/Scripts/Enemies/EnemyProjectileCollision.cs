@@ -23,6 +23,10 @@ public class EnemyProjectileCollision : MonoBehaviour
             collision.gameObject.GetComponent<PlayerStats>().currentHealth -= damage;
             UIController.instance.UpdateHealthBar();
             hit = true;
+            if (collision.gameObject.GetComponent<PlayerStats>().currentHealth <= 0)
+            {
+                UIController.instance.PlayerDiedUI();
+            }
         }
         SoundsManager.instance.PlayerTakesDamage();
         // instantiante impact particle effect

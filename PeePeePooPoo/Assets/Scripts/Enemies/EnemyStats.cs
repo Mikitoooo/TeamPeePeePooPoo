@@ -36,7 +36,7 @@ public class EnemyStats : MonoBehaviour
         HealthBarAppear();
         UpdateHealthBar(health, maxHealth);
         // Play sound effect
-        SoundsManager.instance.EnemyTakesDamage(this.GetComponent<AudioSource>());
+        //SoundsManager.instance.EnemyTakesDamage(this.GetComponent<AudioSource>());
     }
     public void DeathEvent()
     {
@@ -46,6 +46,8 @@ public class EnemyStats : MonoBehaviour
         rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
         //add xp reward to xp block
         xpInstance.GetComponent<ExperienceCube>().expRewarded = expRewarded;
+        //Add to player score
+        UIController.instance.UpdatePlayerScore(expRewarded);
         //Play death particle
         GameObject deathVFXClone = Instantiate(deathParticleVFX, deathProjectileSpawn.position, Quaternion.identity);
         // Play sound effect

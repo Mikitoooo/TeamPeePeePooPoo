@@ -40,23 +40,26 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HoldDownShoot();
-
-        if (heldDown && canShoot)
+        if (!UIController.instance.pause)
         {
-            Transform cameraTransform = Camera.main.transform;
-            RaycastHit HitInfo;
+            HoldDownShoot();
 
-            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out HitInfo, 1000.0f, layerMask))
-                //Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 1000, Color.yellow,100);
-            
-            FireProjectile(HitInfo.point);
-            //print(HitInfo.collider.gameObject);
-            StartCoroutine(ResetFire(fireRate));
-            canShoot = false;
+            if (heldDown && canShoot)
+            {
+                Transform cameraTransform = Camera.main.transform;
+                RaycastHit HitInfo;
+
+                if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out HitInfo, 1000.0f, layerMask))
+                    //Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 1000, Color.yellow,100);
+
+                    FireProjectile(HitInfo.point);
+                //print(HitInfo.collider.gameObject);
+                StartCoroutine(ResetFire(fireRate));
+                canShoot = false;
+            }
+            //Check if player is aiming at target
+            IsAimingAtEnemy();
         }
-        //Check if player is aiming at target
-        IsAimingAtEnemy();
     }
 
     void IsAimingAtEnemy()

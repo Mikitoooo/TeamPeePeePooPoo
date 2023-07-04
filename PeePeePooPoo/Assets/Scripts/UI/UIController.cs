@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -16,7 +17,17 @@ public class UIController : MonoBehaviour
     [Header("Health Fillbar")]
     public Image healthFillbar;
     [Header ("Display TImer")]
-    public Text timerText;
+    public TextMeshProUGUI timerText;
+    [Header("Display Score")]
+    public TextMeshProUGUI scoreText;
+    public float score;
+    [Header("PlayerDeathUI")]
+    public GameObject deathWindow;
+    public TextMeshProUGUI finalScore;
+    public TextMeshProUGUI finalTime;
+    [Header("PauseWindow")]
+    public GameObject pauseWindow;
+    public bool pause;
 
     private float startTime;
     private float elapsedTime;
@@ -57,11 +68,27 @@ public class UIController : MonoBehaviour
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
         }
-
-        // Run Timer
-        elapsedTime = Time.time - startTime;
-        // Display the time
-        UpdateTimerDisplay(elapsedTime);
+        //Pause Game
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            pause = true;
+        }
+        if (!pause)
+        {
+            // Run Timer
+            elapsedTime = Time.time - startTime;
+            // Display the time
+            UpdateTimerDisplay(elapsedTime);
+            Time.timeScale = 1;
+        }
+        else
+        {
+            pauseWindow.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            print(Cursor.visible);
+            Time.timeScale = 0;
+        }
     }
 
     // Updates fill bar on level up
@@ -117,5 +144,24 @@ public class UIController : MonoBehaviour
 
         // Update the timer text
         timerText.text = timeString;
+    }
+
+    public void UpdatePlayerScore(float value)
+    {
+        score = Mathf.Round(score + value);
+
+        // Update the timer text
+        scoreText.text = score.ToString();
+    }
+
+
+    public void PlayerDiedUI()
+    {
+        pause = true;
+        deathWindow.SetActive(true);
+        finalScore.text = score.ToString();
+        finalTime.text = timerText.text;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

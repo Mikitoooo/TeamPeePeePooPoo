@@ -55,7 +55,7 @@ public class SlimeBuddyBrain : MonoBehaviour
                 }
             }
         }
-
+        
     }
 
     public void ImproveFireRate()

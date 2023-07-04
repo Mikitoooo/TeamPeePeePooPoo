@@ -17,7 +17,7 @@ public class SoundsManager : MonoBehaviour
     [Header("Enemy Noises")]
     public AudioClip enemyShoot;
     public AudioClip enemyCharge;
-    public AudioClip enemyTakesDamage;
+    //public AudioClip enemyTakesDamage;
     public AudioClip enemyDies;
     [Header("World Music")]
     public AudioClip music;
@@ -34,71 +34,74 @@ public class SoundsManager : MonoBehaviour
             instance = this;
         }
 
-        this.GetComponent<AudioSource>().clip = music;
-        this.GetComponent<AudioSource>().Play();
+        if (music != null)
+        {
+            this.GetComponent<AudioSource>().clip = music;
+            this.GetComponent<AudioSource>().Play();
+        }
     }
 
     // PLAYER SOUND EFFECTS
     public void PlayerTakesDamage() //
     {
         playerAudioSource.PlayOneShot(playerTakeDamage);
-        print("Player Takes Damage");
+        //print("Player Takes Damage");
     }
 
     public void PlayerJump() //
     {
         playerAudioSource.PlayOneShot(playerJump);
-        print("Player Jump");
+        //print("Player Jump");
     }
     public void PlayerDash() //
     {
         playerAudioSource.PlayOneShot(playerDash);
-        print("Player Dash");
+        //print("Player Dash");
     }
 
     public void PlayerShoot() //
     {
         playerAudioSource.PlayOneShot(playerShoot);
-        print("Player Shoots");
+        //print("Player Shoots");
     }
 
     public void BulletImpact(AudioSource source) //
     {
         source.PlayOneShot(bulletImpact);
-        print("bullet impact");
+        //print("bullet impact");
     }
 
     public void PlayerPickUp() //
     {
         playerAudioSource.PlayOneShot(playerPickUp);
-        print("Player Pick Up");
+        //print("Player Pick Up");
     }
     public void PlayerLevelUp() //
     {
         playerAudioSource.PlayOneShot(playerLevelUp);
-        print("Player Level Up");
+        //print("Player Level Up");
     }
 
     // ENEMY SOUND EFFECTS
     public void EnemyShoot(AudioSource source)
     {
         source.PlayOneShot(enemyShoot);
-        print("Enemy Shoot");
+        //print("Enemy Shoot");
     }
     public void EnemyCharge(AudioSource source)
     {
         source.PlayOneShot(enemyCharge);
-        print("Enemy Charge");
+        //print("Enemy Charge");
     }
-    public void EnemyTakesDamage(AudioSource source)
-    {
-        source.PlayOneShot(enemyTakesDamage);
-        print("Enemy take damage");
-    }
+    //public void EnemyTakesDamage(AudioSource source)
+    //{
+    //    source.PlayOneShot(enemyTakesDamage);
+    //    print("Enemy take damage");
+    //}
     public void EnemyDies(AudioSource source)
     {
         source.PlayOneShot(enemyDies);
-        print("Enemy Dies");
+        //print("Enemy Dies");
     }
 
 }

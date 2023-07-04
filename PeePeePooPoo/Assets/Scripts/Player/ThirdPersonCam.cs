@@ -26,6 +26,7 @@ public class ThirdPersonCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //rotate orientation
         Vector3 viewDirection = player.position - new Vector3(transform.position.x, transform.position.y, transform.position.z);
         orientation.forward = viewDirection.normalized;
@@ -38,8 +39,8 @@ public class ThirdPersonCam : MonoBehaviour
 
             if (inputDirection != Vector3.zero)
                 playerObj.forward = Vector3.Slerp(playerObj.forward, inputDirection.normalized, Time.deltaTime * rotationSpeed);
-        } 
-        else if(currentStyle == CameraStyle.Combat)
+        }
+        else if (currentStyle == CameraStyle.Combat)
         {
             //Vector3 dirToCombatLookAt = combatLookAt.position - new Vector3(transform.position.x, combatLookAt.position.y, transform.position.z);
             Vector3 dirToCombatLookAt = combatLookAt.position - new Vector3(transform.position.x, combatLookAt.position.y, transform.position.z);
@@ -47,5 +48,6 @@ public class ThirdPersonCam : MonoBehaviour
 
             //playerObj.forward = dirToCombatLookAt.normalized;
         }
+
     }
 }
